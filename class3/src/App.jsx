@@ -7,6 +7,8 @@ import Greeting from "./components/Greeting";
 import Products from "./components/Products";
 import Children from "./components/Children";
 import Counter from "./components/Counter";
+import Form from "./components/Form";
+import { Todos } from "./components/Todos";
 
 export const App = () => {
   const isAdult = true;
@@ -19,7 +21,9 @@ export const App = () => {
     // <React.Fragment>
     // <Fragment>
     <>
-      <Counter />
+      <Todos />
+      {/* <Form /> */}
+      {/* <Counter /> */}
       {/* <Children
         title="Create user interfaces from components"
         description="React lets you build user interfaces out of individual pieces called components. Create your own React components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps."
