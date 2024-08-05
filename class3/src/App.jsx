@@ -9,6 +9,7 @@ import Children from "./components/Children";
 import Counter from "./components/Counter";
 import Form from "./components/Form";
 import { Todos } from "./components/Todos";
+import Parent from "./components/Parent";
 
 export const App = () => {
   const isAdult = true;
@@ -21,7 +22,8 @@ export const App = () => {
     // <React.Fragment>
     // <Fragment>
     <>
-      <Todos />
+      <Parent />
+      {/* <Todos /> */}
       {/* <Form /> */}
       {/* <Counter /> */}
       {/* <Children

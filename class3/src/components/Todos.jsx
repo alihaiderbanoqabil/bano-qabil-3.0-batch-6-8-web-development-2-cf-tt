@@ -1,8 +1,9 @@
-import React, { useReducer, useRef, useState } from "react";
+import React, { useContext, useReducer, useRef, useState } from "react";
 // import { BiSolidTrashAlt } from "react-icons/bi";
 // import { BiEditAlt } from "react-icons/bi";
 // OR
 import { BiSolidTrashAlt, BiEditAlt } from "react-icons/bi";
+import { NameContext } from "./Parent";
 const ADD = "ADD";
 const DELETE = "DELETE";
 // const initialTodos = [
@@ -73,6 +74,8 @@ const reducer = (state, action) => {
 };
 
 export const Todos = () => {
+  const value = useContext(NameContext);
+  console.log(value, "value");
   const [todos, dispatch] = useReducer(reducer, initialTodos);
   const copiedTodos = [...todos];
   const titleInputRef = useRef();
