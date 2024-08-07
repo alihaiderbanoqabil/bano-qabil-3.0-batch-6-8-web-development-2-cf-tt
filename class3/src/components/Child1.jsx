@@ -2,7 +2,7 @@ import React, { memo, useContext } from "react";
 import Child2 from "./Child2";
 import { NameContext } from "./Parent";
 
-const Child1 = ({ name }) => {
+const Child1 = ({}) => {
   // const value = useContext(NameContext);
   console.log("Child1 calling");
 

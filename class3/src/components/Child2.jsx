@@ -19,6 +19,7 @@ const Child2 = ({ name }) => {
 };
 
 export default memo(Child2);
+// export default memo(Child2);
 
 // const Child2 = ({ name }) => {
 //   //   const value = useContext(NameContext);

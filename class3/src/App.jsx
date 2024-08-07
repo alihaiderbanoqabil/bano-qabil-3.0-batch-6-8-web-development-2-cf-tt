@@ -8,10 +8,29 @@ import Products from "./components/Products";
 import Children from "./components/Children";
 import Counter from "./components/Counter";
 import Form from "./components/Form";
-import { Todos } from "./components/Todos";
+// import { Todos } from "./components/Todos";
 import Parent from "./components/Parent";
+import Callback from "./components/Callback";
+import { useFetch } from "./hooks/useFetch";
 
 export const App = () => {
+  const { error, isLoading, data } = useFetch(
+    "https://jsonplaceholder.typicode.com/todos"
+  );
+  const {
+    error: usersError,
+    isLoading: usersIsLoading,
+    data: usersData,
+  } = useFetch("https://jsonplaceholder.typicode.com/users");
+  // const { error, isLoading, data } = useFetch(
+  //   "https://jsonplaceholder.typicode.com/posts"
+  // );
+  // const { error, isLoading, data } = useFetch(
+  //   "https://jsonplaceholder.typicode.com/comments"
+  // );
+  console.log({ error, isLoading, data });
+  console.log({ usersError, usersIsLoading, usersData });
+
   const isAdult = true;
   const style = { backgroundColor: "yellow", color: "red" };
 
@@ -22,7 +41,8 @@ export const App = () => {
     // <React.Fragment>
     // <Fragment>
     <>
-      <Parent />
+      <Callback />
+      {/* <Parent /> */}
       {/* <Todos /> */}
       {/* <Form /> */}
       {/* <Counter /> */}

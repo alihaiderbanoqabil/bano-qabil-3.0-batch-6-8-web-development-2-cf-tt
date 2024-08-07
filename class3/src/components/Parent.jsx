@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 import Child from "./Child";
 import Child1 from "./Child1";
-import { Todos } from "./Todos";
+// import { Todos } from "./Todos";
 
 // const NameContext = createContext();
 // const { Provider, Consumer } = NameContext;
