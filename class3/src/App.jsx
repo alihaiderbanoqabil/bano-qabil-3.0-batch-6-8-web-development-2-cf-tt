@@ -12,24 +12,28 @@ import Form from "./components/Form";
 import Parent from "./components/Parent";
 import Callback from "./components/Callback";
 import { useFetch } from "./hooks/useFetch";
+import PropsTypeChecking from "./components/PropsTypeChecking";
 
+const H1 = () => {
+  return <h1>Hello world</h1>;
+};
 export const App = () => {
-  const { error, isLoading, data } = useFetch(
-    "https://jsonplaceholder.typicode.com/todos"
-  );
-  const {
-    error: usersError,
-    isLoading: usersIsLoading,
-    data: usersData,
-  } = useFetch("https://jsonplaceholder.typicode.com/users");
+  // const { error, isLoading, data } = useFetch(
+  //   "https://jsonplaceholder.typicode.com/todos"
+  // );
+  // const {
+  //   error: usersError,
+  //   isLoading: usersIsLoading,
+  //   data: usersData,
+  // } = useFetch("https://jsonplaceholder.typicode.com/users");
   // const { error, isLoading, data } = useFetch(
   //   "https://jsonplaceholder.typicode.com/posts"
   // );
   // const { error, isLoading, data } = useFetch(
   //   "https://jsonplaceholder.typicode.com/comments"
   // );
-  console.log({ error, isLoading, data });
-  console.log({ usersError, usersIsLoading, usersData });
+  // console.log({ error, isLoading, data });
+  // console.log({ usersError, usersIsLoading, usersData });
 
   const isAdult = true;
   const style = { backgroundColor: "yellow", color: "red" };
@@ -41,7 +45,23 @@ export const App = () => {
     // <React.Fragment>
     // <Fragment>
     <>
-      <Callback />
+      {/* <PropsTypeChecking name={"ali"} age={20} isAdult /> */}
+      <PropsTypeChecking
+        name={"67"}
+        // age={20}
+        // isAdult={true}
+        // hobbies={[89]}
+        // info={{ age: 78 }}
+        // add={() => {}}
+        h1={89}
+        // optionalArrayOf={[89]}
+        // optionalObjectWithShape={{
+        //   optionalProperty1: "80909",
+        //   optionalProperty2: true,
+        // }}
+      />
+      {/* <PropsTypeChecking /> */}
+      {/* <Callback /> */}
       {/* <Parent /> */}
       {/* <Todos /> */}
       {/* <Form /> */}
