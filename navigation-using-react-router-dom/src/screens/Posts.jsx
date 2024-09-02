@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { useFetch } from "../hooks/useFetch";
 import {
@@ -10,7 +10,7 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Posts = () => {
   const {
@@ -19,7 +19,16 @@ const Posts = () => {
     isLoading,
   } = useFetch("https://jsonplaceholder.typicode.com/posts");
   console.log(posts, "posts");
+  const navigate = useNavigate();
 
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate("/posts/1", { replace: false, state: "state data goes here" });
+  //   }
+  // }, [token]);
   if (isLoading) {
     return (
       <Spinner animation="border" role="status">
@@ -46,7 +55,11 @@ const Posts = () => {
                     {post.id}: {post.title}
                   </Card.Title>
                   <Card.Text>{post.body}</Card.Text>
-                  <Link to={`/posts/${post.id}`} className="btn btn-primary">
+                  <Link
+                    to={`/posts/${post.id}?name=ali&age=${20}`}
+                    className="btn btn-primary"
+                    state={post}
+                  >
                     View More
                   </Link>
                   {/* <Button variant="primary">Go somewhere</Button> */}

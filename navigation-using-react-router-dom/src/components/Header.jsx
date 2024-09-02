@@ -4,8 +4,9 @@ import React from "react";
 // import Navbar from "react-bootstrap/Navbar";
 // import NavDropdown from "react-bootstrap/NavDropdown";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { routes } from "../routes";
+import style from "./header.module.css";
 
 const Header = () => {
   return (
@@ -18,11 +19,35 @@ const Header = () => {
             {routes.map(
               ({ path, label }, index) =>
                 label && (
+                  <NavLink
+                    key={index}
+                    to={path}
+                    className="nav-link"
+                    // className={({ isActive }) => {
+                    //   console.log({ isActive });
+
+                    //   return isActive ? `${style.active} nav-link` : "nav-link";
+                    //   // return isActive ? "active nav-link" : "nav-link";
+                    // }}
+
+                    style={({ isActive }) => {
+                      return {
+                        fontWeight: isActive ? "bold" : "",
+                      };
+                    }}
+                  >
+                    {label}
+                  </NavLink>
+                )
+            )}
+            {/* {routes.map(
+              ({ path, label }, index) =>
+                label && (
                   <Link key={index} to={path} className="nav-link">
                     {label}
                   </Link>
                 )
-            )}
+            )} */}
             {/* {routes.map(
               ({ path, label, isHidden }, index) =>
                 !isHidden && (
