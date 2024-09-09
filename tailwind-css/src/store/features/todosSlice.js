@@ -1,22 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const initialState = {
+  isLoading: false,
+  todos: [],
+  error: "",
+};
+
+export const fetchTodos = createAsyncThunk("todos/fetchTodos", (url) => {
+  console.log(url, "url");
+
+  return axios(url || "https://jsonplaceholder.typicode.com/todos")
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => error.message);
+});
 
 const todosSlice = createSlice({
+  initialState,
   name: "todos",
-  initialState: [],
-  reducers: {
-    todoAdded(state, action) {
-      state.push({
-        id: action.payload.id,
-        text: action.payload.text,
-        completed: false,
-      });
-    },
-    todoToggled(state, action) {
-      const todo = state.find((todo) => todo.id === action.payload);
-      todo.completed = !todo.completed;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(fetchTodos.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchTodos.fulfilled, (state, { type, payload }) => {
+      state.isLoading = false;
+      console.log("payload", payload);
+
+      state.todos = payload;
+    });
+    builder.addCase(fetchTodos.rejected, (state, { type, payload }) => {
+      console.log("payload ..", payload);
+      state.isLoading = false;
+      state.error = payload;
+    });
   },
 });
 
-export const { todoAdded, todoToggled } = todosSlice.actions;
-export default todosSlice.reducer;
+export const todoReducer = todosSlice.reducer;
+export const todosActions = todosSlice.actions;
