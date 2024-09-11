@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const fetchTodos = createAsyncThunk("todos/fetchTodos", (url) => {
-  console.log(url, "url");
+  // console.log(url, "url");
 
   return axios(url || "https://jsonplaceholder.typicode.com/todos")
     .then((response) => {
@@ -26,7 +26,7 @@ const todosSlice = createSlice({
     });
     builder.addCase(fetchTodos.fulfilled, (state, { type, payload }) => {
       state.isLoading = false;
-      console.log("payload", payload);
+      // console.log("payload", payload);
 
       state.todos = payload;
     });

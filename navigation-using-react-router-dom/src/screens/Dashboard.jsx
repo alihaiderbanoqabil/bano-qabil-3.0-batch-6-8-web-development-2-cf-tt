@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Nav } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+  useEffect(() => {
+    console.log("Dashboard screen mount");
+    return () => {
+      console.log("Dashboard screen unmount");
+    };
+  }, []);
   return (
     <div>
       Dashboard

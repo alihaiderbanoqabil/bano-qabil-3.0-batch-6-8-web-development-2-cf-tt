@@ -67,7 +67,8 @@ const Counter = () => {
   //   axios(`https://fakestoreapi.com/products/`, {
   //     method: "GET",
   //     // data: user,
-  //     // headers:{}
+  //     // headers:{
+  // 'Authorization':`Bearer ${TOKEN}`}
   //   })
   //     .then((response) => {
   //       console.log("response: ", response);

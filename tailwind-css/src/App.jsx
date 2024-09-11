@@ -7,12 +7,27 @@ import {
   restockSpecificNumberOfCakes,
 } from "./store/features/cakeSlice";
 import { fetchTodos } from "./store/features/todosSlice";
+import {
+  jsonplaceholderApi,
+  useGetCommentsQuery,
+  useLazyGetCommentsQuery,
+} from "./store/features/apiSlice";
 
 const App = () => {
+  // jsonplaceholderApi.useGetCommentsQuery()
+  // const { data, error, isSuccess, isError, isLoading, isFetching, refetch } =
+  //   useGetCommentsQuery(`?postId=1`);
+  const [
+    getComments,
+    { data, error, isSuccess, isError, isLoading, isFetching },
+  ] = useLazyGetCommentsQuery();
+  console.log({ data, error, isSuccess, isError, isFetching, isLoading });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTodos());
+    getComments();
   }, []);
 
   const [numberOfCakes, setNumberOfCakes] = useState(0);
@@ -54,6 +69,9 @@ const App = () => {
           disabled={!restockedCakes}
         >
           Restock {restockedCakes} Cake
+        </button>
+        <button className="bg-cyan-500" onClick={() => refetch()}>
+          Refetch
         </button>
       </div>
     </>
