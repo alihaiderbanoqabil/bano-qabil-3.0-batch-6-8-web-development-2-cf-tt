@@ -86,7 +86,6 @@ const Users = () => {
             dataSource={data}
             bordered
             rowKey={(record) => {
-                console.log(record)
                 return record.id
             }}
 
