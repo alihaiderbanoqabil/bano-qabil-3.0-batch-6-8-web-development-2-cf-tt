@@ -111,6 +111,7 @@ const Posts = () => {
             closable
         />
     } console.log(userId, 'userId');
+    console.log(data, 'data');
 
     return (
         <>
@@ -132,9 +133,11 @@ const Posts = () => {
                     total: data?.items || 0,
                     current: currentPage,
                     onChange: onChange,
-                    onShowSizeChange: onShowSizeChange,
                     pageSize: pageSize,
-                    hideOnSinglePage: true
+                    onShowSizeChange: onShowSizeChange,
+                    hideOnSinglePage: true,
+                    showTotal: (total) => `Total ${total} posts`
+
                 }}
             />
             <Modal width={1000} title="Comments" open={isModalOpen} onOk={hideModal} onCancel={hideModal}>
